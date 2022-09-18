@@ -65,6 +65,7 @@ public class RecyclingListView : MonoBehaviour {
     /// </summary>
     public ItemDelegate ItemCallback; 
     
+    [SerializeField, HideInInspector]
     protected ScrollRect scrollRect;
     // circular buffer of child items which are reused
     protected RecyclingListViewItem[] childItems;
@@ -180,7 +181,7 @@ public class RecyclingListView : MonoBehaviour {
         return null;
     }
     
-    protected virtual void Awake() {
+    private void OnValidate() {
         scrollRect = GetComponent<ScrollRect>();
     }
     
