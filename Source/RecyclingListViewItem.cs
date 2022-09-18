@@ -18,6 +18,7 @@ public class RecyclingListViewItem : MonoBehaviour {
         get => currentRow;
     }
 
+    [SerializeField, HideInInspector]
     private RectTransform rectTransform;
     public RectTransform RectTransform {
         get {
@@ -27,14 +28,12 @@ public class RecyclingListViewItem : MonoBehaviour {
         }
     }
 
-    private void Awake() {
-        rectTransform = GetComponent<RectTransform>();
-    }
-
     public void NotifyCurrentAssignment(RecyclingListView v, int row) {
         parentList = v;
         currentRow = row;
     }
     
-    
+    private void OnValidate(){
+        rectTransform = GetComponent<RectTransform>();
+    }
 }
